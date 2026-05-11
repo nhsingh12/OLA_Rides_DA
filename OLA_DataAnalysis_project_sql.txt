@@ -1,0 +1,25 @@
+select * from ola_rides;;
+create view Successful_booking AS
+select * from ola_rides where booking_status = 'Success'
+
+select * from Successful_booking;
+create view avg_distance AS
+select vehicle_type , avg(ride_distance)  as avg_distance from ola_rides group by vehicle_type
+select * from avg_distance;
+
+SELECT COUNT(*) FROM ola_rides WHERE booking_status = 'Cancelled by Customer'
+
+SELECT TOP 5 ( CUSTOMER_ID), COUNT(BOOKING_ID) AS TOTAL_BOOKING FROM ola_rides  GROUP BY CUSTOMER_ID ORDER BY TOTAL_BOOKING DESC 
+
+SELECT count(*) as cancelled FROM ola_rides WHERE Reason_for_cancelling_by_Driver = 'Personal & Car related issues'
+
+select max(Driver_Ratings) as highest_rating,min(Driver_Ratings) as lowest_rating from ola_rides where vehicle_type='Prime Sedan'
+
+select vehicle_type, AVG(Customer_Rating) AS AVERAGE_RATING  from ola_rides group by vehicle_type
+
+
+select SUM(booking_value ) AS SUMMATION from ola_rides where booking_status = 'Success'
+
+SELECT  booking_id, Incomplete_Rides_Reason FROM ola_rides where Incomplete_Rides = 1;
+
+
